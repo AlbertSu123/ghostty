@@ -247,6 +247,9 @@ test "url regex" {
         expect: []const u8,
         num_matches: usize = 1,
     }{
+        .{ .input = "Connect vnc://mac1.local:5900 now", .expect = "vnc://mac1.local:5900" },
+        .{ .input = "(vnc://[2001:db8::1]:5900).", .expect = "vnc://[2001:db8::1]:5900" },
+        .{ .input = "`vnc://user@192.0.2.10:5901`", .expect = "vnc://user@192.0.2.10:5901" },
         .{
             .input = "hello https://example.com world",
             .expect = "https://example.com",
